@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/frameLayout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/agua"
+            android:scaleType="centerCrop"/>
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:alpha="0.65"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comida"
+            android:textSize="25dp"
+            android:fontFamily="monospace"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:id="@+id/categoryname_food"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puerto Rico"
+            android:fontFamily="monospace"
+            android:textSize="40dp"
+            android:textColor="#fff"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="40dp"
+            android:id="@+id/statename_food"/>
+
+    </FrameLayout>
+
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/frameLayout"
+            android:id="@+id/food_gridview"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="65dp"
+            android:verticalSpacing="10dp">
+        </GridView>
+
+
+
+
+
+</RelativeLayout>

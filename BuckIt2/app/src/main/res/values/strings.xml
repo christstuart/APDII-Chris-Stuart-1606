@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">BuckIt</string>
+
+    <declare-styleable name="customfont"> <attr name="android:fontFamily"/> <attr name="android:textStyle"/> </declare-styleable>
+
+</resources>

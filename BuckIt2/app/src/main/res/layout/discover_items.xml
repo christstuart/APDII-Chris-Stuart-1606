@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_info"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/view_color"
+            android:layout_gravity="center"
+            android:background="@color/navigationBarColor"
+            android:alpha="0.3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ok deja ver si funciona"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/middle_text"
+            fontPath="fonts/Moon Bold.otf"
+            android:lines="4"
+            android:textSize="18dp"
+            />
+
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true">
+
+
+
+
+        <View
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/navigationBarColor" />
+
+        <TextView
+            android:id="@+id/categoryname_discover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Comida"
+            android:textColor="#fff"
+            android:textSize="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </FrameLayout>
+
+
+</RelativeLayout>
