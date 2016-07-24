@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:src="@drawable/agua"
+            android:scaleType="centerCrop"
+            android:id="@+id/food_gridview_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:background="@color/navigationBarColor"
+            android:alpha="0.4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Criollo"
+            android:layout_gravity="center"
+            android:textColor="#fff"
+            android:textSize="15dp"
+            android:id="@+id/food_gridview_text"/>
+
+
+    </FrameLayout>
+
+</RelativeLayout>

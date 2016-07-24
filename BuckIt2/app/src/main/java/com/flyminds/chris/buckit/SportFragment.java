@@ -1,5 +1,6 @@
 package com.flyminds.chris.buckit;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -63,17 +65,33 @@ public class SportFragment extends Fragment {
 
         GridView sport_gridview = (GridView) getActivity().findViewById(R.id.sport_gridview);
 
-        ArrayList<FoodCategories> foodCategories = new ArrayList<>();
+        ArrayList<AllCategories> sportCategory = new ArrayList<>();
 
-        foodCategories.add(new FoodCategories("Gym", Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
-        foodCategories.add(new FoodCategories("Boxing Classes",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
-        foodCategories.add(new FoodCategories("Zumba Classes",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
-        foodCategories.add(new FoodCategories("Sport Clinics",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
-        foodCategories.add(new FoodCategories("Game tickets",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
+        sportCategory.add(new AllCategories("Gym", Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Sport"));
+        sportCategory.add(new AllCategories("Boxing Classes",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Sport"));
+        sportCategory.add(new AllCategories("Zumba Classes",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Sport"));
+        sportCategory.add(new AllCategories("Sport Clinics",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Sport"));
+        sportCategory.add(new AllCategories("Game tickets",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Sport"));
 
-        BaseAdapters.CategoryAdapter foodAdapter = new BaseAdapters.CategoryAdapter(foodCategories,getActivity());
+        BaseAdapters.CategoryAdapter foodAdapter = new BaseAdapters.CategoryAdapter(sportCategory,getActivity());
 
         sport_gridview.setAdapter(foodAdapter);
+
+        sport_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AllCategories category = (AllCategories) parent.getAdapter().getItem(position);
+
+                Log.i(TAG, "onItemClick: " + category.getCategory());
+
+                Intent categoryIntent = new Intent(getActivity(),CategoryScreen.class);
+
+                categoryIntent.putExtra("Name",category.getCategoryName());
+
+                getActivity().startActivity(categoryIntent);
+
+            }
+        });
 
 
     }

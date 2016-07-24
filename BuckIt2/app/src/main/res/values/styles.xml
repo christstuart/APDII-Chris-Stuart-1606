@@ -3,7 +3,7 @@
 
     <style name="MyMaterialTheme" parent="Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

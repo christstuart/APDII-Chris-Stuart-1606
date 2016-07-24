@@ -1,5 +1,6 @@
 package com.flyminds.chris.buckit;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -64,17 +66,34 @@ public class FoodFragment extends Fragment {
         catname.setTypeface(custom_font);
 
 
-        ArrayList<FoodCategories> foodCategories = new ArrayList<>();
+        ArrayList<AllCategories> foodCategories = new ArrayList<>();
 
-        foodCategories.add(new FoodCategories("Criollo",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
-        foodCategories.add(new FoodCategories("Vegetariana",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
-        foodCategories.add(new FoodCategories("Mexicana",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
-        foodCategories.add(new FoodCategories("Italiana",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage")));
+        foodCategories.add(new AllCategories("Criollo",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Food"));
+        foodCategories.add(new AllCategories("Vegetariana",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Food"));
+        foodCategories.add(new AllCategories("Mexicana",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Food"));
+        foodCategories.add(new AllCategories("Italiana",Uri.parse("android.resource://com.flyminds.chris.buckit/drawable/whiteimage"),"Food"));
 
 
         BaseAdapters.CategoryAdapter foodAdapter = new BaseAdapters.CategoryAdapter(foodCategories,getActivity());
 
         foodGridView.setAdapter(foodAdapter);
+
+
+        foodGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AllCategories category = (AllCategories) parent.getAdapter().getItem(position);
+
+                Log.i(TAG, "onItemClick: " + category.getCategory());
+
+                Intent categoryIntent = new Intent(getActivity(),CategoryScreen.class);
+
+                categoryIntent.putExtra("Name",category.getCategoryName());
+
+                getActivity().startActivity(categoryIntent);
+
+            }
+        });
 
 
     }

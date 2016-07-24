@@ -3,8 +3,6 @@ package com.flyminds.chris.buckit;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by Chris on 7/15/16.
@@ -98,12 +94,12 @@ public class BaseAdapters {
 
     static public class CategoryAdapter extends BaseAdapter {
 
-        ArrayList<FoodCategories> discoverFavorites;
+        ArrayList<AllCategories> discoverFavorites;
         Context context;
 
         private static final long ID_CONSTANT = 0xDEADBEEF;
 
-        public CategoryAdapter(ArrayList<FoodCategories> book, Context context) {
+        public CategoryAdapter(ArrayList<AllCategories> book, Context context) {
             this.discoverFavorites = book;
             this.context = context;
         }
@@ -138,7 +134,7 @@ public class BaseAdapters {
                 convertView = LayoutInflater.from(context).inflate(R.layout.food_items, parent, false);
             }
 
-            FoodCategories favorite = (FoodCategories) getItem(position);
+            AllCategories favorite = (AllCategories) getItem(position);
 
             ImageView food_gridview_image = (ImageView) convertView.findViewById(R.id.food_gridview_image);
             TextView foodText = (TextView) convertView.findViewById(R.id.food_gridview_text);
@@ -153,6 +149,122 @@ public class BaseAdapters {
         }
     }
 
+    static public class TopAdapter extends BaseAdapter {
+
+
+        ArrayList<AllCategories> discoverFavorites;
+        Context context;
+
+        private static final long ID_CONSTANT = 0xDEADBEEF;
+
+        public TopAdapter(ArrayList<AllCategories> book, Context context) {
+            this.discoverFavorites = book;
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            if (discoverFavorites != null) {
+                return discoverFavorites.size();
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (discoverFavorites != null && position < discoverFavorites.size() && position >= 0) {
+                return discoverFavorites.get(position);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return ID_CONSTANT + position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.top_item, parent, false);
+            }
+
+            AllCategories favorite = (AllCategories) getItem(position);
+
+            ImageView food_gridview_image = (ImageView) convertView.findViewById(R.id.food_gridview_image);
+            TextView foodText = (TextView) convertView.findViewById(R.id.food_gridview_text);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Moon Bold.otf");
+            foodText.setTypeface(custom_font);
+
+            foodText.setText(favorite.getCategoryName());
+            food_gridview_image.setImageURI(favorite.getImage());
+
+            return convertView;
+        }
+    }
+
+
+    static public class BottomAdapter extends BaseAdapter {
+
+
+        ArrayList<AllCategories> discoverFavorites;
+        Context context;
+
+        private static final long ID_CONSTANT = 0xDEADBEEF;
+
+        public BottomAdapter(ArrayList<AllCategories> book, Context context) {
+            this.discoverFavorites = book;
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            if (discoverFavorites != null) {
+                return discoverFavorites.size();
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (discoverFavorites != null && position < discoverFavorites.size() && position >= 0) {
+                return discoverFavorites.get(position);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return ID_CONSTANT + position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.bottom_item, parent, false);
+            }
+
+            AllCategories favorite = (AllCategories) getItem(position);
+
+            ImageView food_gridview_image = (ImageView) convertView.findViewById(R.id.food_gridview_image);
+            TextView foodText = (TextView) convertView.findViewById(R.id.food_gridview_text);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Moon Bold.otf");
+            foodText.setTypeface(custom_font);
+
+            foodText.setText(favorite.getCategoryName());
+            food_gridview_image.setImageURI(favorite.getImage());
+
+            return convertView;
+        }
+    }
 
 
 }

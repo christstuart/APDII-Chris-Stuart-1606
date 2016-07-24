@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.flyminds.chris.buckit.CategoryScreen">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cueva" />
+
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.65"
+                    android:background="#000" />
+
+
+                <TextView
+                    android:id="@+id/category_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="monospace"
+                    android:text="Puerto Rico"
+                    android:textColor="#fff"
+                    android:textSize="40sp" />
+
+              <Button
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="X"
+                  android:id="@+id/finish"
+                  android:layout_marginTop="30dp"
+                  android:layout_marginLeft="25dp"
+                  android:layout_gravity="left"
+                  android:gravity="left"
+                  android:textSize="35dp"
+                  android:textColor="#fff"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frameLayout"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Top"
+                android:textColor="@color/navigationBarColor"
+                android:textSize="25sp" />
+
+
+            <com.flyminds.chris.buckit.TwoWayGridView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/gridview"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:columnWidth="130dp"
+                app:rowHeight="150dp"
+                app:numColumns="auto_fit"
+                app:numRows="auto_fit"
+                android:layout_marginTop="5dp"
+                app:stretchMode="spacingWidthUniform"
+                app:scrollDirectionPortrait="horizontal"
+                app:scrollDirectionLandscape="horizontal"
+                android:layout_below="@+id/textview"/>
+
+            <TextView
+                android:id="@+id/textviewdos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gridview"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Bottom"
+                android:textColor="@color/navigationBarColor"
+                android:textSize="25sp" />
+
+
+            <com.flyminds.chris.buckit.TwoWayGridView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/gridviewdos"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                app:columnWidth="130dp"
+                app:rowHeight="190dp"
+                app:numColumns="auto_fit"
+                app:numRows="auto_fit"
+                android:layout_marginTop="5dp"
+                app:stretchMode="spacingWidthUniform"
+                app:scrollDirectionPortrait="horizontal"
+                app:scrollDirectionLandscape="horizontal"
+                android:layout_below="@+id/textviewdos"/>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+            <!--<com.jess.ui.TwoWayGridView-->
+                <!--android:id="@+id/top_gridview"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:numColumns="auto_fit"-->
+                <!--android:layout_below="@+id/textview"-->
+                <!--android:stretchMode="spacingWidthUniform"-->
+                <!--android:scrollDirectionPortrait="vertical"-->
+                <!--android:scrollDirectionLandscape="horizontal"-->
+                <!--android:gravity="center"/>-->
+
+
+
+
+</RelativeLayout>

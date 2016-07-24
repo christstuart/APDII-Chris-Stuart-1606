@@ -5,14 +5,16 @@ import android.net.Uri;
 /**
  * Created by Chris on 7/17/16.
  */
-public class FoodCategories {
+public class AllCategories {
 
     String categoryName;
     Uri image;
+    String Category;
 
-    public FoodCategories(String categoryName, Uri image) {
+    public AllCategories(String categoryName, Uri image, String category) {
         this.categoryName = categoryName;
         this.image = image;
+        Category = category;
     }
 
     public Uri getImage() {
@@ -21,5 +23,9 @@ public class FoodCategories {
 
     public String getCategoryName() {
         return categoryName;
+    }
+
+    public String getCategory() {
+        return Category;
     }
 }

@@ -3,9 +3,58 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/frameLayout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cueva"
+            android:scaleType="centerCrop"/>
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:alpha="0.65"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turism"
+            android:textSize="25dp"
+            android:fontFamily="monospace"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:id="@+id/categoryname_turism"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puerto Rico"
+            android:fontFamily="monospace"
+            android:textSize="40dp"
+            android:textColor="#fff"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="40dp"
+            android:id="@+id/statename_turism"/>
+
+    </FrameLayout>
+
+
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Turism"/>
+        android:layout_below="@+id/frameLayout"
+        android:id="@+id/turism_gridview"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="65dp"
+        android:verticalSpacing="10dp">
+    </GridView>
+
 
 </LinearLayout>
