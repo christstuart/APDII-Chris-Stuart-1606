@@ -1,26 +1,16 @@
 package com.flyminds.chris.buckit;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.kinvey.android.Client;
-import com.kinvey.android.callback.KinveyPingCallback;
-import com.kinvey.android.callback.KinveyUserCallback;
-import com.kinvey.java.User;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.ArrayList;
@@ -29,15 +19,12 @@ import java.util.List;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = "MainActivity";
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_profile);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/Moon Bold.otf")
@@ -46,15 +33,15 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-        setTitle("Home");
+        setTitle("Profile");
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarProfile);
         setSupportActionBar(toolbar);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.profileviewpager);
         setupViewPager(viewPager);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.profiletabs);
         tabLayout.setupWithViewPager(viewPager);
 
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
@@ -65,21 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
         tintManager.setTintColor(Color.BLACK);
 
-
-        final Client mKinveyClient = new Client.Builder("kid_WJFaHn5GmZ", "169d568121764862ad5950c15c9d2f5a"
-                , this.getApplicationContext()).build();
-
-        mKinveyClient.ping(new KinveyPingCallback() {
-            public void onFailure(Throwable t) {
-                Log.e(TAG, "Kinvey Ping Failed", t);
-            }
-
-            public void onSuccess(Boolean b) {
-                Log.d(TAG, "Kinvey Ping Success");
-            }
-        });
+    }
 
 
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new DicoverFragment(), "Discover");
+        adapter.addFragment(new FoodFragment(), "Food");
+        viewPager.setAdapter(adapter);
     }
 
 
@@ -88,36 +68,6 @@ public class MainActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.profilem,menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == R.id.profile) {
-
-            Intent intent = new Intent(this,ProfileActivity.class);
-            startActivity(intent);
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new DicoverFragment(), "Discover");
-        adapter.addFragment(new FoodFragment(), "Food");
-        adapter.addFragment(new SportFragment(), "Sport");
-        adapter.addFragment(new EventsFragment(), "Events");
-        adapter.addFragment(new TurismFragment(), "Turism");
-        viewPager.setAdapter(adapter);
-    }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -150,6 +100,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-
-
-

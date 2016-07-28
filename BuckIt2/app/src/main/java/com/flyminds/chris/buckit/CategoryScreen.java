@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -146,6 +147,17 @@ public class CategoryScreen extends AppCompatActivity {
 
 
         dos_gridview.setAdapter(dosAdapter);
+
+
+        dos_gridview.setOnItemClickListener(new TwoWayAdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(TwoWayAdapterView<?> parent, View view, int position, long id) {
+                Intent intent1 = new Intent(CategoryScreen.this,DetailScreen.class);
+
+                startActivity(intent1);
+
+            }
+        });
 
 
     }

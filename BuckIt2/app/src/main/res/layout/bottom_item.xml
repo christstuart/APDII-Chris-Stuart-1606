@@ -8,7 +8,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="330dp"
             android:layout_height="190dp"
             android:src="@drawable/agua"
             android:scaleType="centerCrop"
@@ -17,7 +17,7 @@
             android:layout_marginRight="10dp"/>
 
         <View
-            android:layout_width="match_parent"
+            android:layout_width="330dp"
             android:layout_height="190dp"
             android:background="@color/navigationBarColor"
             android:alpha="0.4"

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -261,6 +262,126 @@ public class BaseAdapters {
 
             foodText.setText(favorite.getCategoryName());
             food_gridview_image.setImageURI(favorite.getImage());
+
+            return convertView;
+        }
+    }
+
+    static public class HourAdapter extends BaseAdapter {
+
+
+        ArrayList<Place> discoverFavorites;
+        Context context;
+
+        private static final long ID_CONSTANT = 0xDEADBEEF;
+
+        public HourAdapter(ArrayList<Place> book, Context context) {
+            this.discoverFavorites = book;
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            if (discoverFavorites != null) {
+                return discoverFavorites.size();
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (discoverFavorites != null && position < discoverFavorites.size() && position >= 0) {
+                return discoverFavorites.get(position);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return ID_CONSTANT + position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.hour_item, parent, false);
+            }
+
+            Place favorite = (Place) getItem(position);
+
+            TextView food_gridview_image = (TextView) convertView.findViewById(R.id.date);
+            TextView foodText = (TextView) convertView.findViewById(R.id.time);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Moon Bold.otf");
+            Typeface custom_font2 = Typeface.createFromAsset(context.getAssets(), "MoonLight.otf");
+            food_gridview_image.setTypeface(custom_font);
+            foodText.setTypeface(custom_font2);
+
+            foodText.setText(favorite.getTime());
+            food_gridview_image.setText(favorite.getDate());
+
+            return convertView;
+        }
+    }
+
+
+    static public class OfertaAdapter extends BaseAdapter {
+
+
+        ArrayList<Oferta> discoverFavorites;
+        Context context;
+
+        private static final long ID_CONSTANT = 0xDEADBEEF;
+
+        public OfertaAdapter(ArrayList<Oferta> book, Context context) {
+            this.discoverFavorites = book;
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            if (discoverFavorites != null) {
+                return discoverFavorites.size();
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (discoverFavorites != null && position < discoverFavorites.size() && position >= 0) {
+                return discoverFavorites.get(position);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return ID_CONSTANT + position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.oferta_item, parent, false);
+            }
+
+            Oferta favorite = (Oferta) getItem(position);
+
+            TextView oferta_text = (TextView) convertView.findViewById(R.id.oferta_text);
+            ImageView oferta_image = (ImageView) convertView.findViewById(R.id.oferta_image);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Moon Bold.otf");
+            Typeface custom_font2 = Typeface.createFromAsset(context.getAssets(), "MoonLight.otf");
+            oferta_text.setTypeface(custom_font);
+
+            oferta_text.setText(favorite.getOferta());
+            oferta_image.setImageURI(favorite.getImage());
 
             return convertView;
         }
