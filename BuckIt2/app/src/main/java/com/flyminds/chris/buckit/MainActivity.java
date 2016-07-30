@@ -23,6 +23,9 @@ import com.kinvey.android.callback.KinveyUserCallback;
 import com.kinvey.java.User;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,13 +34,19 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "iwH1uYbKg2YjkEkCFGG3pE7wx";
+    private static final String TWITTER_SECRET = "LS4iS0X9OqpU5v4H7kUSCfgQ0KwuJHsrH7RxOoKAZ8A1wnCOtb";
+
+
     private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_main);
-
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/Moon Bold.otf")
@@ -76,8 +85,51 @@ public class MainActivity extends AppCompatActivity {
 
             public void onSuccess(Boolean b) {
                 Log.d(TAG, "Kinvey Ping Success");
+
+                Log.i(TAG, "onCreate: " + "LogIn " + mKinveyClient.user().getUsername());
+
             }
         });
+
+      if (mKinveyClient.user().isUserLoggedIn()){
+
+
+
+
+
+      } else {
+
+          mKinveyClient.user().login(new KinveyUserCallback() {
+              @Override
+              public void onFailure(Throwable error) {
+                  Log.e(TAG, "Login Failure", error);
+              }
+              @Override
+              public void onSuccess(User result) {
+                  Log.i(TAG,"Logged in a new implicit user with id: " + result.getId());
+
+                  mKinveyClient.user().setUsername("Anon");
+                  mKinveyClient.user().update(new KinveyUserCallback() {
+                      @Override
+                      public void onSuccess(User user) {
+
+                          user.setUsername("Anon");
+
+                      }
+
+                      @Override
+                      public void onFailure(Throwable throwable) {
+
+                      }
+                  });
+
+              }
+          });
+
+
+
+
+      }
 
 
     }

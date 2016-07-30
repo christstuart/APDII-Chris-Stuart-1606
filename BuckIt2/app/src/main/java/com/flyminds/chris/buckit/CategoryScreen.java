@@ -108,6 +108,17 @@ public class CategoryScreen extends AppCompatActivity {
         sport_gridview.setAdapter(foodAdapter);
 
 
+        sport_gridview.setOnItemClickListener(new TwoWayAdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(TwoWayAdapterView<?> parent, View view, int position, long id) {
+                Intent intent1 = new Intent(CategoryScreen.this,DetailScreen.class);
+
+                startActivity(intent1);
+
+            }
+        });
+
+
         TwoWayGridView dos_gridview = (TwoWayGridView) findViewById(R.id.gridviewdos);
 
         ArrayList<AllCategories> dosCategory = new ArrayList<>();

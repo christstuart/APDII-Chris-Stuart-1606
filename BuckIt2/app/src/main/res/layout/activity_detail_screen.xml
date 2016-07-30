@@ -67,28 +67,38 @@
                 android:layout_height="1dp"
                 android:layout_below="@id/menu"
                 android:layout_marginLeft="20dp"
-                android:background="@color/colorPrimary" />
+                android:background="@color/colorPrimary"
+                android:id="@+id/line_under_menu"/>
 
-
-            <LinearLayout
-                android:id="@+id/menu_linear"
+            <com.flyminds.chris.buckit.TwoWayGridView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/gridview_menu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="17dp"
+                android:layout_height="65dp"
+                app:columnWidth="130dp"
+                app:rowHeight="65dp"
+                android:layout_marginLeft="25dp"
+                app:numColumns="auto_fit"
+                app:horizontalSpacing="23dp"
+                app:numRows="auto_fit"
+                android:paddingRight="10dp"
                 android:layout_marginTop="17dp"
-                android:orientation="horizontal">
-
-
-            </LinearLayout>
+                app:stretchMode="spacingWidthUniform"
+                app:scrollDirectionPortrait="horizontal"
+                app:scrollDirectionLandscape="horizontal"
+                android:layout_marginBottom="17dp"
+                android:layout_below="@+id/line_under_menu"
+                android:clickable="true"
+                app:cacheColorHint="#fff"/>
 
 
             <TextView
                 android:id="@+id/menu2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/menu"
+                android:layout_below="@id/gridview_menu"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
                 android:text="Description"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="20sp" />
@@ -216,12 +226,53 @@
                 android:layout_height="wrap_content"
                 android:text="USD 6 - 18"
                 android:layout_marginTop="17dp"
+                android:layout_marginBottom="17dp"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/secondLine5"
                 android:textSize="30sp"
                 android:textColor="@color/textColorPrimary"
                 android:id="@+id/precio_text"
                 />
+
+            <TextView
+                android:id="@+id/menu6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/precio_text"
+                android:layout_marginLeft="20dp"
+                android:text="Imagenes"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp" />
+
+            <View
+                android:id="@+id/secondLine6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/menu6"
+                android:layout_marginLeft="20dp"
+                android:background="@color/colorPrimary" />
+
+            <com.flyminds.chris.buckit.TwoWayGridView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/gridview_image"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                app:columnWidth="130dp"
+                app:rowHeight="130dp"
+                android:layout_marginLeft="25dp"
+                app:numColumns="auto_fit"
+                app:horizontalSpacing="15dp"
+                app:numRows="auto_fit"
+                android:layout_marginTop="17dp"
+                android:paddingRight="10dp"
+                app:stretchMode="spacingWidthUniform"
+                app:scrollDirectionPortrait="horizontal"
+                app:scrollDirectionLandscape="horizontal"
+                android:layout_marginBottom="60dp"
+                android:layout_below="@+id/secondLine6"
+                android:clickable="true"
+                app:cacheColorHint="#fff" />
 
 
         </RelativeLayout>

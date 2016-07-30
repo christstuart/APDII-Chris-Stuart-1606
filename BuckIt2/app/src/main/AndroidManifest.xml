@@ -32,7 +32,11 @@
             android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".ProfileActivity"
-            android:theme="@style/MyMaterialTheme"/>
+            android:theme="@style/MyMaterialTheme" />
+        <activity android:name=".OfferScreen"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ecc79ea6687825314fb622bdce32b1c09517438a" />
     </application>
 
 </manifest>

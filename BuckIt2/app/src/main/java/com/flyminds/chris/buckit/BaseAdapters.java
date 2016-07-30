@@ -320,8 +320,8 @@ public class BaseAdapters {
             food_gridview_image.setTypeface(custom_font);
             foodText.setTypeface(custom_font2);
 
-            foodText.setText(favorite.getTime());
-            food_gridview_image.setText(favorite.getDate());
+            foodText.setText(favorite.getTime().get(position));
+            food_gridview_image.setText(favorite.getDate().get(position));
 
             return convertView;
         }
@@ -382,6 +382,238 @@ public class BaseAdapters {
 
             oferta_text.setText(favorite.getOferta());
             oferta_image.setImageURI(favorite.getImage());
+
+            return convertView;
+        }
+    }
+
+    static public class ImagePlaceAdapter extends BaseAdapter {
+
+
+        ArrayList<Place> discoverFavorites;
+        Context context;
+
+        private static final long ID_CONSTANT = 0xDEADBEEF;
+
+        public ImagePlaceAdapter(ArrayList<Place> book, Context context) {
+            this.discoverFavorites = book;
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            if (discoverFavorites != null) {
+                return discoverFavorites.size();
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (discoverFavorites != null && position < discoverFavorites.size() && position >= 0) {
+                return discoverFavorites.get(position);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return ID_CONSTANT + position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.image_place_item, parent, false);
+            }
+
+            Place favorite = (Place) getItem(position);
+
+            TextView place_text = (TextView) convertView.findViewById(R.id.place_text);
+            ImageView place_image = (ImageView) convertView.findViewById(R.id.place_image);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Moon Bold.otf");
+            Typeface custom_font2 = Typeface.createFromAsset(context.getAssets(), "MoonLight.otf");
+            place_text.setTypeface(custom_font);
+
+            place_text.setText("Oferta");
+            place_image.setImageURI(favorite.getImage().get(position));
+
+            return convertView;
+        }
+    }
+
+    static public class ExperienciasAdapter extends BaseAdapter {
+
+
+        ArrayList<Place> discoverFavorites;
+        Context context;
+
+        private static final long ID_CONSTANT = 0xDEADBEEF;
+
+        public ExperienciasAdapter(ArrayList<Place> book, Context context) {
+            this.discoverFavorites = book;
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            if (discoverFavorites != null) {
+                return discoverFavorites.size();
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (discoverFavorites != null && position < discoverFavorites.size() && position >= 0) {
+                return discoverFavorites.get(position);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return ID_CONSTANT + position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.experiencias_item, parent, false);
+            }
+
+            Place favorite = (Place) getItem(position);
+
+            TextView place_text = (TextView) convertView.findViewById(R.id.ex_text);
+            ImageView place_image = (ImageView) convertView.findViewById(R.id.ex_image);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Moon Bold.otf");
+            Typeface custom_font2 = Typeface.createFromAsset(context.getAssets(), "MoonLight.otf");
+            place_text.setTypeface(custom_font);
+
+            place_text.setText(favorite.getName());
+            place_image.setImageURI(favorite.getImage().get(position));
+
+            return convertView;
+        }
+    }
+
+
+    static public class GoalsAdapter extends BaseAdapter {
+
+
+        ArrayList<Place> discoverFavorites;
+        Context context;
+
+        private static final long ID_CONSTANT = 0xDEADBEEF;
+
+        public GoalsAdapter(ArrayList<Place> book, Context context) {
+            this.discoverFavorites = book;
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            if (discoverFavorites != null) {
+                return discoverFavorites.size();
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (discoverFavorites != null && position < discoverFavorites.size() && position >= 0) {
+                return discoverFavorites.get(position);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return ID_CONSTANT + position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.goals_item, parent, false);
+            }
+
+            Place favorite = (Place) getItem(position);
+
+            TextView place_text = (TextView) convertView.findViewById(R.id.go_text);
+            ImageView place_image = (ImageView) convertView.findViewById(R.id.go_image);
+
+            Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "Moon Bold.otf");
+            Typeface custom_font2 = Typeface.createFromAsset(context.getAssets(), "MoonLight.otf");
+            place_text.setTypeface(custom_font);
+
+            place_text.setText(favorite.getName());
+            place_image.setImageURI(favorite.getImage().get(position));
+
+            return convertView;
+        }
+    }
+
+    static public class MenuAdapter extends BaseAdapter {
+
+
+        ArrayList<MenuItems> discoverFavorites;
+        Context context;
+
+        private static final long ID_CONSTANT = 0xDEADBEEF;
+
+        public MenuAdapter(ArrayList<MenuItems> book, Context context) {
+            this.discoverFavorites = book;
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            if (discoverFavorites != null) {
+                return discoverFavorites.size();
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            if (discoverFavorites != null && position < discoverFavorites.size() && position >= 0) {
+                return discoverFavorites.get(position);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return ID_CONSTANT + position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.menu_item, parent, false);
+            }
+
+            MenuItems favorite = (MenuItems) getItem(position);
+
+
+            ImageView menu_image = (ImageView) convertView.findViewById(R.id.menu_image);
+
+            menu_image.setImageURI(favorite.getImage());
 
             return convertView;
         }
