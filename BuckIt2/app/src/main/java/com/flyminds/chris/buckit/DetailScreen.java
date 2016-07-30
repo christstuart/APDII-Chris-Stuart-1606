@@ -28,6 +28,7 @@ import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 import com.twitter.sdk.android.core.models.User;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -125,20 +126,23 @@ public class DetailScreen extends AppCompatActivity {
 
 
         if (image_gridview != null) {
-            image_gridview.setOnItemClickListener(new TwoWayAdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(TwoWayAdapterView<?> parent, View view, int position, long id) {
-                    Place place = (Place) parent.getAdapter().getItem(position);
-
-                    Log.i(TAG, "onItemClick: " + place.getImage());
-
-                    final Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setDataAndType(place.getImage().get(position), "image/*");
-                    startActivity(Intent.createChooser(intent, "title"));
-
-
-                }
-            });
+//            image_gridview.setOnItemClickListener(new TwoWayAdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(TwoWayAdapterView<?> parent, View view, int position, long id) {
+//                    Place place = (Place) parent.getAdapter().getItem(position);
+//
+//                    Log.i(TAG, "onItemClick: " + place.getImage());
+//
+//                    final Intent intent = new Intent(Intent.ACTION_VIEW);
+//
+//                    File file = new File(place.getImage().get(0).toString());
+//
+//                    intent.setDataAndType(Uri.fromFile(file), "image/*");
+//                    startActivity(Intent.createChooser(intent, "title"));
+//
+//
+//                }
+//            });
         }
 
 
